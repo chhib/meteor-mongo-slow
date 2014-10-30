@@ -4,7 +4,7 @@ Extends `Mongo.Collection` on the server with `slow` methods:
 
 - `slowRemove(selector, chunk, delay)`
 
-The slow approach is to allow the oplog replication to catch up when managing large amounts of documents. Based of this blog post from Compose: [Going Slow for Performance](https://blog.compose.io/going-slow-for-performance-mongodb-shell-power/)
+The slow approach is to allow the oplog replication to catch up when managing large amounts of documents. Based on this blog post from Compose: [Going Slow for Performance](https://blog.compose.io/going-slow-for-performance-mongodb-shell-power/)
 
 ## Installation
 
