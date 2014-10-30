@@ -1,13 +1,10 @@
-// Write your tests here!
-// Here is an example.
-Tinytest.addAsync('chhib:mongo-slow-remove - Ensure all documents are removed', function (test, onComplete) {
-  
-  var coll = new Mongo.Collection('mongo_slow_remove');
+coll = new Mongo.Collection('mongo_slow_remove');
 
+Tinytest.add('chhib:mongo-slow - slowRemove - Collection is extended with slowRemove()', function (test) {
   test.equal(typeof coll.slowRemove, 'function', 'Collection should have slowRemove()');
+});
 
-
-  coll.remove({});
+Tinytest.addAsync('chhib:mongo-slow - slowRemove - All documents are removed', function (test, onComplete) {
   test.equal(coll.find().count(), 0, 'Collection should be empty');
 
   var doc = {field: 'with some data'};
@@ -24,5 +21,7 @@ Tinytest.addAsync('chhib:mongo-slow-remove - Ensure all documents are removed', 
 
   Meteor.setTimeout(function () {
     test.equal(coll.find().count(), 0, 'Should have removed all documents slowly');
+
+    onComplete();
   }, 2000);
 });

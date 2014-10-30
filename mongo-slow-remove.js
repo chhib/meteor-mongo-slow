@@ -1,4 +1,4 @@
-Future = Npm.require('fibers/future');
+// Future = Npm.require('fibers/future');
 
 var Extensions = {
   

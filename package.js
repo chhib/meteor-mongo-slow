@@ -5,14 +5,18 @@ Package.describe({
   git: 'https://github.com/chhib/meteor-mongo-slow.git'
 });
 
-Package.onUse(function(api) {
+var configurePackage = function (api) {
   api.versionsFrom('1.0');
-  api.use(['underscore', 'mongo']);
-  api.addFiles('mongo-slow-remove.js', ['server']);
+  api.use(['underscore', 'mongo'], 'server');
+  api.addFiles('mongo-slow-remove.js', 'server');
+};
+
+Package.onUse(function(api) {
+  configurePackage(api);  
 });
 
 Package.onTest(function(api) {
-  api.use('tinytest');
-  api.use('chhib:mongo-slow');
-  api.addFiles('mongo-slow-remove-tests.js');
+  configurePackage(api);
+  api.use('tinytest', 'server');
+  api.addFiles('mongo-slow-remove-tests.js', 'server');
 });
